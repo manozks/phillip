@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phillip Kloeckner · Organist for a New Age</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button onclick="toggleMenu()" style="position:absolute;top:2rem;right:1.75rem;background:none;border:none;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;padding:0;" aria-label="Close menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b8965a" stroke-width="1.5" stroke-linecap="round">
+      <line x1="4" y1="4" x2="20" y2="20"/>
+      <line x1="20" y1="4" x2="4" y2="20"/>
+    </svg>
+  </button>
+  <a href="index.html">Home</a>
+  <a href="biography.html">Biography</a>
+  <a href="vision.html">Vision for Future</a>
+  <a href="listen.html">Listen</a>
+  <a href="news.html">News</a>
+  <a href="recording.html">Recording</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Phillip Kloeckner · D.M.A</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+   <li class="nav-dropdown">
+      <a href="biography.html" class="dropdown-trigger">About <svg width="8" height="5" viewBox="0 0 8 5" fill="none" style="display:inline-block;vertical-align:middle;margin-left:4px;transition:transform 0.3s"><path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      <div class="dropdown-menu">
+        <a href="biography.html" class="dropdown-item">Biography</a>
+        <a href="vision.html" class="dropdown-item">Vision for Future</a>
+      </div>
+    </li>
+   
+    <li><a href="listen.html">Listen</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="recording.html">Recording</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-full-bg" style="background-image:url('data:image/jpeg;base64,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');"></div>
+  <!-- Decorative pipe organ lines SVG -->
+  <div class="hero-lines" style="z-index:1;">
+    <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Pipe organ silhouette lines -->
+      <line x1="700" y1="0" x2="700" y2="900" stroke="#b8965a" stroke-width="0.5"/>
+      <line x1="0" y1="450" x2="1400" y2="450" stroke="#b8965a" stroke-width="0.5"/>
+      <!-- Arched pipes -->
+      <path d="M200 900 Q200 200 200 0" stroke="#b8965a" stroke-width="0.5"/>
+      <path d="M250 900 Q250 300 250 0" stroke="#b8965a" stroke-width="0.5"/>
+      <path d="M300 900 Q300 400 300 0" stroke="#b8965a" stroke-width="0.5"/>
+      <path d="M350 900 Q350 500 350 0" stroke="#b8965a" stroke-width="0.5"/>
+      <path d="M900 900 Q900 200 900 0" stroke="#b8965a" stroke-width="0.5"/>
+      <path d="M950 900 Q950 300 950 0" stroke="#b8965a" stroke-width="0.5"/>
+      <path d="M1000 900 Q1000 400 1000 0" stroke="#b8965a" stroke-width="0.5"/>
+      <path d="M1050 900 Q1050 500 1050 0" stroke="#b8965a" stroke-width="0.5"/>
+      <!-- Decorative arch -->
+      <path d="M400 900 Q700 100 1000 900" stroke="#b8965a" stroke-width="0.5"/>
+      <path d="M450 900 Q700 200 950 900" stroke="#b8965a" stroke-width="0.5"/>
+      <!-- Grid -->
+      <rect x="550" y="200" width="300" height="500" stroke="#b8965a" stroke-width="0.3" fill="none"/>
+      <rect x="570" y="220" width="260" height="460" stroke="#b8965a" stroke-width="0.2" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="hero-left">
+    <p class="hero-eyebrow">Organist · Harpsichordist · DMA</p>
+    <h1 class="hero-title">
+      Organ for<br><em>a New Age</em>
+    </h1>
+    <p class="hero-subtitle">Bringing seven centuries of majestic organ literature to global audiences through transformative interpretations and inspired improvisation.</p>
+    <a href="#about" class="hero-cta">
+      <span>Discover the Music</span>
+      <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+        <path d="M11 1l4 4-4 4M1 5h14" stroke="currentColor" stroke-width="1"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-image-wrap">
+      <!-- Organ pipe decorative image placeholder -->
+      <div style="width:360px;height:450px;position:relative;overflow:hidden;">
+        <img src="images/phillip.jpg" alt="Phillip Kloeckner at the organ" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%) brightness(85%);">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(14,12,9,0.75) 0%,rgba(14,12,9,0.1) 40%,transparent 70%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:2rem; z-index: 9;">
+          <p style="font-family:'Cinzel',serif;font-size:0.9rem;letter-spacing:0.2em;color:var(--gold)">PHILLIP KLOECKNER · D.M.A<br><span style="color:rgba(245,240,232,0.45);font-family:'Raleway',sans-serif;font-weight:300;letter-spacing:0.15em">Organist · Harpsichordist</span></p>
+        </div>
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent)"></div>
+        <div style="position:absolute;inset:0;border:1px solid rgba(184,150,90,0.15);pointer-events:none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- GOLD DIVIDER -->
+<div class="gold-rule reveal">
+  <span>· Chicago International Organ Academy ·</span>
+</div>
+
+<!-- VISION QUOTE -->
+<div class="quote-section" id="vision">
+  <div class="quote-inner reveal">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">We live in the dawning of a new age in which amazing technologies now make it possible to imagine that the pipe organ and its more than seven centuries of dynamic literature can be shared and appreciated by people around the globe.</p>
+    <p class="quote-attribution">— Phillip Kloeckner, D.M.A · Founder, CIOA</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="reveal-left">
+      <div class="about-img-frame">
+        <div class="about-placeholder">
+            <img src="images/interview.png" alt="Phillip Kloeckner at the organ" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%) brightness(85%);">
+          <svg viewBox="0 0 120 160" fill="none">
+            <!-- Stylized person silhouette at organ -->
+            <ellipse cx="60" cy="35" rx="20" ry="25" fill="#b8965a"/>
+            <rect x="30" y="65" width="60" height="80" rx="2" fill="#b8965a"/>
+            <rect x="10" y="80" width="100" height="8" rx="1" fill="#b8965a"/>
+            <rect x="10" y="95" width="100" height="8" rx="1" fill="#b8965a"/>
+            <rect x="10" y="110" width="100" height="8" rx="1" fill="#b8965a"/>
+          </svg>
+          <div class="about-img-label">Phillip Kloeckner · Organist & Harpsichordist</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-body reveal-right">
+      <p class="section-label">Biography</p>
+      <div class="accent-line"></div>
+      <h2 class="section-title">A Musical<br><em>Soul Without Borders</em></h2>
+      <p><strong>Phillip Kloeckner's</strong> musical journey spans continents and centuries. His soul has found deep resonance across a remarkable breadth of contexts, from the great cathedrals of Europe to intimate concert halls worldwide.</p>
+      <p>His mission is to bring positive, transformative, and inspiring energy to audiences through the beauty and thoughtfulness of his interpretations of both standard and rarely-heard repertoire, and through instinctive and intuitive improvisations.</p>
+      <p>His most gratifying musical experiences continue to result from being part of uniting people through the transcendent experience of sharing music.</p>
+      <a href="#" class="read-more">Read Full Biography</a>
+    </div>
+  </div>
+</section>
+
+<!-- PERFORMANCES -->
+<section class="performances-bg" id="listen">
+  <p class="section-label reveal" style="text-align:center">Performances</p>
+  <h2 class="section-title reveal" style="text-align:center;max-width:600px;margin:0 auto 1rem">
+    A Life in <em>Music & Sound</em>
+  </h2>
+  <div class="ornament reveal">✦ ✦ ✦</div>
+  <div class="perf-grid stagger">
+    <div class="perf-card">
+      <div class="perf-num">01</div>
+      <p class="perf-title">Organ Performances</p>
+      <p class="perf-desc">Recordings spanning the full breadth of organ literature — from Bach and Buxtehude to contemporary works.</p>
+    </div>
+    <div class="perf-card">
+      <div class="perf-num">02</div>
+      <p class="perf-title">Harpsichord</p>
+      <p class="perf-desc">Exploring the rich tradition of early keyboard music with historical sensitivity and personal artistry.</p>
+    </div>
+    <div class="perf-card">
+      <div class="perf-num">03</div>
+      <p class="perf-title">Improvisation</p>
+      <p class="perf-desc">Instinctive and intuitive improvisations that respond to the space, the audience, and the moment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS & AUDIO -->
+<section id="news">
+  <div class="news-inner">
+    <p class="section-label reveal">Latest News</p>
+    <div class="accent-line reveal"></div>
+    <h2 class="section-title reveal">Newly <em>Discovered Works</em></h2>
+
+    <div class="news-card reveal">
+      <p class="news-date">· World Premiere · 2018 AGO Convention · Kansas City</p>
+      <h3 class="news-title">Two Newly-Discovered Organ Works by Giacomo Puccini</h3>
+      <p class="news-body">Recorded at the Madonna della Strada Chapel at Loyola University in Chicago, these remarkable pieces — composed by Puccini for liturgical use during his early adult years as an organist in Lucca — were premiered at the American Guild of Organists convention on July 4, 2018. Published by Carus-Verlag in Stuttgart.</p>
+
+      <div class="audio-wrap">
+        <div class="audio-item">
+          <button class="play-btn">
+            <svg viewBox="0 0 10 12"><path d="M0 0L10 6L0 12V0Z"/></svg>
+          </button>
+          <div>
+            <p class="audio-label">Puccini — Sonata No. 6</p>
+            <p class="audio-subtitle">Recorded at Madonna della Strada Chapel, Chicago</p>
+          </div>
+          <div class="audio-progress"></div>
+        </div>
+        <div class="audio-item">
+          <button class="play-btn">
+            <svg viewBox="0 0 10 12"><path d="M0 0L10 6L0 12V0Z"/></svg>
+          </button>
+          <div>
+            <p class="audio-label">Puccini — Sonata No. 7</p>
+            <p class="audio-subtitle">Recorded at Madonna della Strada Chapel, Chicago</p>
+          </div>
+          <div class="audio-progress"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-card reveal">
+      <p class="news-date">· Press Review · La Palabra</p>
+      <h3 class="news-title">International Critical Acclaim</h3>
+      <p class="news-body" style="font-style:italic">"Kloeckner tuvo una ejecución llena de color y que demostró su virtuosismo."</p>
+      <p class="news-body" style="margin-top:0.75rem">— La Palabra (A performance full of color that demonstrated his virtuosity.)</p>
+    </div>
+  </div>
+</section>
+
+<!-- CD SECTION -->
+<section class="cd-section" id="cd">
+  <div class="cd-inner">
+    <div class="reveal-left">
+      <div class="cd-img-wrap">
+        <div class="cd-placeholder">
+          <div class="cd-rings">
+            <p class="cd-label-text">PHILLIP<br>KLOECKNER<br>DMA</p>
+          </div>
+        </div>
+        <div class="cd-shadow"></div>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <p class="section-label">First Recording</p>
+      <div class="accent-line"></div>
+      <h2 class="section-title">My <em>First CD</em></h2>
+      <p style="font-size:1.1rem;line-height:1.9;color:rgba(245,240,232,0.55);margin-bottom:1.5rem">A landmark recording featuring works that showcase the full expressive range of the pipe organ — from solemn liturgical works to virtuosic concert pieces. Available now through Raven CD.</p>
+      <a href="https://ravencd.com" target="_blank" class="buy-btn">Purchase Recording →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER GRID -->
+<div class="footer-grid reveal" id="contact">
+ 
+  <!-- COL 1: Contact / Address -->
+  <div>
+    <span class="footer-col-label">Contact</span>
+    <div class="contact-info">
+      <strong>Phillip Kloeckner, DMA</strong>
+      Founder & Artistic Director<br>
+      Chicago International<br>
+      Organ Academy<br>
+      77 W. Washington St, Ste 200<br>
+      Chicago, Illinois 60602
+    </div>
+  </div>
+ 
+  <!-- COL 2: Get in Touch -->
+  <div>
+    <span class="footer-col-label">Get in Touch</span>
+    <div class="contact-info">
+      <a href="tel:7733091769" style="color:inherit;text-decoration:none;display:block">773-309-1769</a>
+      <a href="mailto:info@cioa.global" style="color:inherit;text-decoration:none;display:block">info@cioa.global</a>
+    </div>
+  
+  </div>
+ 
+  <!-- COL 3: Subscribe -->
+  <div>
+    <span class="footer-col-label">Newsletter</span>
+    <p class="subscribe-heading">Stay Close to the Music</p>
+    <p class="subscribe-desc">Recitals, premieres &amp; recordings — delivered to your inbox.</p>
+    <div class="subscribe-form" id="subscribeForm">
+      <div class="subscribe-row">
+        <input
+          type="email"
+          id="subscribeEmail"
+          class="subscribe-input"
+          placeholder="Your email address"
+          autocomplete="email"
+        />
+        <button class="subscribe-btn" onclick="handleSubscribe()">
+          <span>Go</span>
+        </button>
+      </div>
+      <div class="subscribe-success" id="subscribeSuccess">
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="9" r="8.5" stroke="#b8965a" stroke-width="1"/>
+          <path d="M5 9l3 3 5-5" stroke="#b8965a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p>Thank you — we'll be in touch.</p>
+      </div>
+      <p class="subscribe-note">No spam, ever.</p>
+    </div>
+  </div>
+ 
+  <!-- COL 4: Social Icons -->
+  <div>
+    <span class="footer-col-label">Follow</span>
+    <div class="social-icons">
+      <a href="http://www.linkedin.com/pub/phillip-kloeckner/38/634/1b6" target="_blank" class="social-icon-link">
+        <span class="soc-dot"></span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="3"/>
+          <path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/>
+        </svg>
+        LinkedIn
+      </a>
+      <a href="http://www.cioa.global/" target="_blank" class="social-icon-link">
+        <span class="soc-dot"></span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+        </svg>
+        CIOA Website
+      </a>
+      <a href="#" class="social-icon-link">
+        <span class="soc-dot"></span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/>
+          <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+        </svg>
+        YouTube
+      </a>
+      <a href="#" class="social-icon-link">
+        <span class="soc-dot"></span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18V5l12-2v13"/>
+          <circle cx="6" cy="18" r="3"/>
+          <circle cx="18" cy="16" r="3"/>
+        </svg>
+        Recordings
+      </a>
+    </div>
+  </div>
+ 
+</div>
+ 
+<!-- FOOTER -->
+<footer>
+  <!-- BOTTOM BAR -->
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2024 Phillip Kloeckner, D.M.A. All rights reserved.</p>
+    <a href="http://www.cioa.global/" target="_blank" class="footer-link">Chicago International Organ Academy →</a>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Hamburger menu
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const ham = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    ham.classList.toggle('open');
+  }
+  document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', toggleMenu));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Play button toggle
+  document.querySelectorAll('.play-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const svg = this.querySelector('svg path');
+      const isPlaying = this.dataset.playing === '1';
+      if (isPlaying) {
+        svg.setAttribute('d', 'M0 0L10 6L0 12V0Z');
+        this.dataset.playing = '0';
+      } else {
+        svg.setAttribute('d', 'M2 0H5V12H2V0ZM7 0H10V12H7V0Z');
+        this.dataset.playing = '1';
+      }
+    });
+  });
+</script>
+</body>
+</html>
