@@ -10,10 +10,45 @@
 </head>
 <body>
 
-
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button onclick="toggleMenu()" style="position:absolute;top:2rem;right:1.75rem;background:none;border:none;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;padding:0;" aria-label="Close menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b8965a" stroke-width="1.5" stroke-linecap="round">
+      <line x1="4" y1="4" x2="20" y2="20"/>
+      <line x1="20" y1="4" x2="4" y2="20"/>
+    </svg>
+  </button>
+  <a href="index.html">Home</a>
+  <a href="biography.html">Biography</a>
+  <a href="vision.html">Vision for Future</a>
+  <a href="listen.html">Listen</a>
+  <a href="news.html">News</a>
+  <a href="recording.html">Recording</a>
+  <a href="contact.html">Contact</a>
+</div>
 
 <!-- NAVBAR -->
-<div id="header-include"></div>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Phillip Kloeckner · D.M.A</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+   <li class="nav-dropdown">
+      <a href="biography.html" class="dropdown-trigger">About <svg width="8" height="5" viewBox="0 0 8 5" fill="none" style="display:inline-block;vertical-align:middle;margin-left:4px;transition:transform 0.3s"><path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      <div class="dropdown-menu">
+        <a href="biography.html" class="dropdown-item">Biography</a>
+        <a href="vision.html" class="dropdown-item">Vision for Future</a>
+      </div>
+    </li>
+   
+    <li><a href="listen.html">Listen</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="recording.html">Recording</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -217,10 +252,153 @@
 </section>
 
 <!-- FOOTER GRID -->
-<div id="footer-include"></div>
+<div class="footer-grid reveal" id="contact">
+ 
+  <!-- COL 1: Contact / Address -->
+  <div>
+    <span class="footer-col-label">Contact</span>
+    <div class="contact-info">
+      <strong>Phillip Kloeckner, DMA</strong>
+      Founder & Artistic Director<br>
+      Chicago International<br>
+      Organ Academy<br>
+      77 W. Washington St, Ste 200<br>
+      Chicago, Illinois 60602
+    </div>
+  </div>
+ 
+  <!-- COL 2: Get in Touch -->
+  <div>
+    <span class="footer-col-label">Get in Touch</span>
+    <div class="contact-info">
+      <a href="tel:7733091769" style="color:inherit;text-decoration:none;display:block">773-309-1769</a>
+      <a href="mailto:info@cioa.global" style="color:inherit;text-decoration:none;display:block">info@cioa.global</a>
+    </div>
+  
+  </div>
+ 
+  <!-- COL 3: Subscribe -->
+  <div>
+    <span class="footer-col-label">Newsletter</span>
+    <p class="subscribe-heading">Stay Close to the Music</p>
+    <p class="subscribe-desc">Recitals, premieres &amp; recordings — delivered to your inbox.</p>
+    <div class="subscribe-form" id="subscribeForm">
+      <div class="subscribe-row">
+        <input
+          type="email"
+          id="subscribeEmail"
+          class="subscribe-input"
+          placeholder="Your email address"
+          autocomplete="email"
+        />
+        <button class="subscribe-btn" onclick="handleSubscribe()">
+          <span>Go</span>
+        </button>
+      </div>
+      <div class="subscribe-success" id="subscribeSuccess">
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="9" r="8.5" stroke="#b8965a" stroke-width="1"/>
+          <path d="M5 9l3 3 5-5" stroke="#b8965a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p>Thank you — we'll be in touch.</p>
+      </div>
+      <p class="subscribe-note">No spam, ever.</p>
+    </div>
+  </div>
+ 
+  <!-- COL 4: Social Icons -->
+  <div>
+    <span class="footer-col-label">Follow</span>
+    <div class="social-icons">
+      <a href="http://www.linkedin.com/pub/phillip-kloeckner/38/634/1b6" target="_blank" class="social-icon-link">
+        <span class="soc-dot"></span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="3"/>
+          <path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/>
+        </svg>
+        LinkedIn
+      </a>
+      <a href="http://www.cioa.global/" target="_blank" class="social-icon-link">
+        <span class="soc-dot"></span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+        </svg>
+        CIOA Website
+      </a>
+      <a href="#" class="social-icon-link">
+        <span class="soc-dot"></span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/>
+          <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+        </svg>
+        YouTube
+      </a>
+      <a href="#" class="social-icon-link">
+        <span class="soc-dot"></span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18V5l12-2v13"/>
+          <circle cx="6" cy="18" r="3"/>
+          <circle cx="18" cy="16" r="3"/>
+        </svg>
+        Recordings
+      </a>
+    </div>
+  </div>
+ 
+</div>
+ 
+<!-- FOOTER -->
+<footer>
+  <!-- BOTTOM BAR -->
+  <div class="footer-bottom">
+    <p class="footer-copy">
+© <span class="dynamic-year"></span> Phillip Kloeckner, D.M.A. All rights reserved.
+</p>
+    <a href="http://www.cioa.global/" target="_blank" class="footer-link">Chicago International Organ Academy →</a>
+  </div>
+</footer>
 
-    <script src="js/main.js"></script>
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
 
+  // Set dynamic year
+  document.querySelector('.dynamic-year').textContent = new Date().getFullYear();
 
+  // Hamburger menu
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const ham = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    ham.classList.toggle('open');
+  }
+  document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', toggleMenu));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Play button toggle
+  document.querySelectorAll('.play-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const svg = this.querySelector('svg path');
+      const isPlaying = this.dataset.playing === '1';
+      if (isPlaying) {
+        svg.setAttribute('d', 'M0 0L10 6L0 12V0Z');
+        this.dataset.playing = '0';
+      } else {
+        svg.setAttribute('d', 'M2 0H5V12H2V0ZM7 0H10V12H7V0Z');
+        this.dataset.playing = '1';
+      }
+    });
+  });
+</script>
 </body>
 </html>

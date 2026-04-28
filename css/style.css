@@ -91,7 +91,8 @@
   }
   .nav-dropdown:hover .dropdown-menu {
     opacity: 1; pointer-events: all;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0%);
+    
   }
   .nav-dropdown:hover .dropdown-trigger svg { transform: rotate(180deg); }
   .dropdown-item {
@@ -915,6 +916,11 @@
     width: 60px; height: 1px;
     background: var(--gold);
     margin-bottom: 2rem;
+  }
+  .page-hero-overlay {
+    position: absolute; inset: 0;
+    background:(ellipse at 60% 50%, rgba(255,255,90,0.1) 0%, transparent 40%);
+    pointer-events: none;
   }
  
   /* RESPONSIVE */
