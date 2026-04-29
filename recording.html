@@ -3,224 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.tailwindcss.com"></script>
+<title>Recording · Phillip Kloeckner</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root { --cream:#f5f0e8;--gold:#b8965a;--gold-light:#d4aa72;--bg:#0e0c09;--surface:#181410;--surface2:#221e18; }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--cream);font-family:'Cormorant Garamond',serif;overflow-x:hidden;}
-  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:0.4;}
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.5s ease;}
-  nav.scrolled{background:rgba(14,12,9,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(184,150,90,0.15);padding:1rem 3rem;}
-  .nav-logo{font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:0.25em;color:var(--gold);text-decoration:none;text-transform:uppercase;}
-  .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
-  .nav-links a{font-family:'Raleway',sans-serif;font-size:0.7rem;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,240,232,0.6);text-decoration:none;position:relative;transition:color 0.3s;}
-  .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.3s ease;}
-  .nav-links a:hover{color:var(--gold-light);}
-  .nav-links a:hover::after{transform:scaleX(1);}
-  .nav-dropdown{position:relative;}
-  .dropdown-trigger{display:flex;align-items:center;}
-  .dropdown-menu{position:absolute;top:calc(100% + 1.2rem);left:50%;transform:translateX(-50%) translateY(-8px);background:rgba(14,12,9,0.97);backdrop-filter:blur(20px);border:1px solid rgba(184,150,90,0.2);border-top:2px solid var(--gold);min-width:190px;opacity:0;pointer-events:none;transition:all 0.3s ease;z-index:200;}
-  .nav-dropdown:hover .dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
-  .nav-dropdown:hover .dropdown-trigger svg{transform:rotate(180deg);}
-  .dropdown-item{display:block;padding:0.85rem 1.5rem;font-family:'Raleway',sans-serif;font-size:0.65rem;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.55)!important;text-decoration:none;border-bottom:1px solid rgba(184,150,90,0.08);transition:all 0.25s;}
-  .dropdown-item:last-child{border-bottom:none;}
-  .dropdown-item::after{display:none!important;}
-  .dropdown-item:hover{color:var(--gold)!important;background:rgba(184,150,90,0.05);padding-left:2rem;}
-  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:200;}
-  .hamburger span{width:24px;height:1px;background:var(--gold);transition:all 0.3s;display:block;}
-  .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px);}
-  .hamburger.open span:nth-child(2){opacity:0;}
-  .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px);}
-  .mobile-menu{position:fixed;inset:0;background:rgba(14,12,9,0.97);z-index:150;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;opacity:0;pointer-events:none;transition:opacity 0.4s;}
-  .mobile-menu.open{opacity:1;pointer-events:all;}
-  .mobile-menu a{font-family:'Cinzel',serif;font-size:1.5rem;color:var(--cream);text-decoration:none;letter-spacing:0.1em;transition:color 0.3s;}
-  .mobile-menu a:hover{color:var(--gold);}
-  /* PAGE HERO */
-  .page-hero{padding:9rem 3rem 4rem;border-bottom:1px solid rgba(184,150,90,0.1);position:relative;overflow:hidden;}
-  .page-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 60% 50%,rgba(184,150,90,0.06) 0%,transparent 70%);pointer-events:none;}
-  .page-eyebrow{font-family:'Raleway',sans-serif;font-size:0.6rem;font-weight:300;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
-  .page-title{font-family:'Cinzel',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:400;color:var(--cream);line-height:1;}
-  .page-title em{font-style:italic;font-family:'Cormorant Garamond',serif;color:var(--gold-light);font-size:1.05em;}
-  .page-rule{width:60px;height:1px;background:var(--gold);margin:1.5rem 0;}
-  .page-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:rgba(245,240,232,0.45);max-width:560px;line-height:1.7;}
-  /* CONTENT */
-  .content-section{padding:5rem 3rem;max-width:1100px;margin:0 auto;}
-  .section-label{font-family:'Raleway',sans-serif;font-size:0.6rem;font-weight:300;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
-  .section-title{font-family:'Cinzel',serif;font-size:clamp(1.6rem,3vw,2.8rem);font-weight:400;color:var(--cream);line-height:1.1;margin-bottom:1.5rem;}
-  .section-title em{font-style:italic;font-family:'Cormorant Garamond',serif;color:var(--gold-light);}
-  .accent-line{width:60px;height:1px;background:var(--gold);margin-bottom:2rem;}
-  /* FOOTER GRID */
-  .footer-grid{border-top:1px solid rgba(184,150,90,0.15);background:var(--surface);padding:4rem 3rem;display:grid;grid-template-columns:repeat(4,1fr);gap:3rem;align-items:start;}
-  .footer-col-label{font-family:'Raleway',sans-serif;font-size:0.6rem;font-weight:400;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:block;}
-  .contact-info{font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(245,240,232,0.5);line-height:1.9;}
-  .social-icon-link{display:inline-flex;align-items:center;gap:0.85rem;text-decoration:none;color:rgba(245,240,232,0.45);font-family:'Raleway',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;transition:color 0.3s;padding:0.5rem 0;border-bottom:1px solid rgba(184,150,90,0.07);width:100%;}
-  .social-icon-link:last-child{border-bottom:none;}
-  .social-icon-link:hover{color:var(--gold);}
-  .soc-dot{width:6px;height:6px;border-radius:50%;background:rgba(184,150,90,0.3);flex-shrink:0;transition:background 0.3s;}
-  .social-icon-link:hover .soc-dot{background:var(--gold);}
-  .footer-bottom{padding:1.75rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-  .footer-copy{font-family:'Raleway',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,240,232,0.25);}
-  .footer-link{font-family:'Raleway',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;opacity:0.6;transition:opacity 0.3s;}
-  .footer-link:hover{opacity:1;}
-  /* SUBSCRIBE */
-  .subscribe-form{display:flex;flex-direction:column;gap:0.75rem;}
-  .subscribe-row{display:flex;}
-  .subscribe-input{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(184,150,90,0.2);border-right:none;padding:0.75rem 1rem;font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:var(--cream);outline:none;transition:border-color 0.3s;min-width:0;}
-  .subscribe-input::placeholder{color:rgba(245,240,232,0.25);font-style:italic;}
-  .subscribe-input:focus{border-color:rgba(184,150,90,0.5);}
-  .subscribe-btn{background:var(--gold);color:var(--bg);border:1px solid var(--gold);padding:0.75rem 1.25rem;font-family:'Raleway',sans-serif;font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:background 0.3s;}
-  .subscribe-btn:hover{background:var(--gold-light);}
-  .subscribe-note{font-family:'Raleway',sans-serif;font-size:0.55rem;letter-spacing:0.15em;color:rgba(245,240,232,0.2);}
-  .subscribe-heading{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:400;color:var(--cream);line-height:1.4;margin-bottom:0.5rem;letter-spacing:0.05em;}
-  .subscribe-desc{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.88rem;color:rgba(245,240,232,0.35);line-height:1.6;margin-bottom:1rem;}
-  .subscribe-success{display:none;align-items:center;gap:0.75rem;padding:0.75rem 1rem;border:1px solid rgba(184,150,90,0.3);background:rgba(184,150,90,0.05);}
-  .subscribe-success p{font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:var(--gold-light);font-style:italic;}
-  /* REVEAL */
-  .reveal{opacity:0;transform:translateY(30px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1);}
-  .reveal.visible{opacity:1;transform:none;}
-  .reveal-left{opacity:0;transform:translateX(-30px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1);}
-  .reveal-left.visible{opacity:1;transform:none;}
-  .reveal-right{opacity:0;transform:translateX(30px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1);}
-  .reveal-right.visible{opacity:1;transform:none;}
-  @media(max-width:900px){
-    nav{padding:1.25rem 1.5rem;}
-    nav.scrolled{padding:0.875rem 1.5rem;}
-    .nav-links{display:none;}
-    .hamburger{display:flex;}
-    .footer-grid{grid-template-columns:1fr 1fr;gap:2rem;padding:3rem 1.5rem;}
-    .footer-bottom{padding:1.5rem;flex-direction:column;align-items:flex-start;}
-    .page-hero{padding:7rem 1.5rem 3rem;}
-    .content-section{padding:3rem 1.5rem;}
-  }
-  @media(max-width:600px){
-    .footer-grid{grid-template-columns:1fr;}
-    .subscribe-row{flex-direction:column;}
-    .subscribe-input{border-right:1px solid rgba(184,150,90,0.2);border-bottom:none;}
-    .subscribe-btn{width:100%;border-top:none;padding:0.9rem;}
-  }
-</style>
+<link rel="stylesheet" href="style.css">
+<script src="header.js"></script>
+<script src="footer.js"></script>
 </head>
 <body>
 <title>Recording · Phillip Kloeckner</title>
-<style>
-  .rec-hero-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:6rem;align-items:center;}
-  .cd-3d{position:relative;transform:perspective(1000px) rotateY(-10deg) rotateX(3deg);transition:transform 0.6s ease;}
-  .cd-3d:hover{transform:perspective(1000px) rotateY(-4deg) rotateX(1deg);}
-  .cd-box{width:100%;aspect-ratio:1;background:var(--surface2);border:1px solid rgba(184,150,90,0.15);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-  .cd-box::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(184,150,90,0.08) 0%,transparent 50%,rgba(184,150,90,0.04) 100%);}
-  .cd-rings-outer{width:70%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(184,150,90,0.12);display:flex;align-items:center;justify-content:center;position:relative;}
-  .cd-rings-mid{width:65%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(184,150,90,0.18);display:flex;align-items:center;justify-content:center;}
-  .cd-center{width:28%;aspect-ratio:1;border-radius:50%;background:rgba(184,150,90,0.07);border:1px solid rgba(184,150,90,0.25);display:flex;align-items:center;justify-content:center;}
-  .cd-center-dot{width:20%;aspect-ratio:1;border-radius:50%;background:rgba(184,150,90,0.4);}
-  .cd-shadow{position:absolute;bottom:-20px;left:10%;right:10%;height:30px;background:rgba(0,0,0,0.5);filter:blur(16px);border-radius:50%;}
-  .cd-title-label{position:absolute;top:1.5rem;left:0;right:0;text-align:center;}
-  .cd-title-label p{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;color:var(--gold);}
-  .cd-title-label span{font-family:'Raleway',sans-serif;font-size:0.55rem;letter-spacing:0.15em;color:rgba(245,240,232,0.35);display:block;margin-top:0.2rem;}
-  .rec-body p{font-size:1.1rem;line-height:1.9;color:rgba(245,240,232,0.6);margin-bottom:1.5rem;}
-  .price-badge{display:inline-flex;align-items:baseline;gap:0.5rem;margin-bottom:1.5rem;}
-  .price-val{font-family:'Cinzel',serif;font-size:2rem;color:var(--gold);}
-  .price-label{font-family:'Raleway',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,240,232,0.35);}
-  .buy-row{display:flex;gap:1rem;flex-wrap:wrap;}
-  .btn-primary{display:inline-flex;align-items:center;gap:.75rem;font-family:'Raleway',sans-serif;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:1rem 2rem;text-decoration:none;transition:all .3s;border:1px solid var(--gold);}
-  .btn-primary:hover{background:var(--gold-light);letter-spacing:.32em;}
-  .btn-outline{display:inline-flex;align-items:center;gap:.75rem;font-family:'Raleway',sans-serif;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);background:transparent;padding:1rem 2rem;text-decoration:none;transition:all .3s;border:1px solid rgba(184,150,90,0.4);}
-  .btn-outline:hover{border-color:var(--gold);background:rgba(184,150,90,0.06);}
-  /* TRACKLIST */
-  .tracklist{margin-top:1.5rem;}
-  .track-row{display:flex;align-items:center;gap:1.5rem;padding:1rem 0;border-bottom:1px solid rgba(184,150,90,0.07);transition:background .3s;cursor:pointer;}
-  .track-row:hover{background:rgba(184,150,90,0.03);padding-left:0.75rem;}
-  .track-num{font-family:'Cinzel',serif;font-size:0.75rem;color:rgba(184,150,90,0.3);width:24px;flex-shrink:0;text-align:center;}
-  .track-info{flex:1;}
-  .track-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--cream);}
-  .track-composer{font-family:'Raleway',sans-serif;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.35);margin-top:0.15rem;}
-  .track-dur{font-family:'Raleway',sans-serif;font-size:0.6rem;letter-spacing:0.1em;color:rgba(245,240,232,0.3);}
-  .track-play{width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,150,90,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;}
-  .track-row:hover .track-play{border-color:var(--gold);}
-  .track-play svg{fill:rgba(184,150,90,0.4);width:9px;margin-left:1px;transition:fill .3s;}
-  .track-row:hover .track-play svg{fill:var(--gold);}
-  /* REVIEWS */
-  .reviews-section{background:var(--surface);border-top:1px solid rgba(184,150,90,0.08);padding:5rem 3rem;}
-  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
-  .review-card{background:var(--surface2);border:1px solid rgba(184,150,90,0.08);padding:2rem;transition:border-color .3s;}
-  .review-card:hover{border-color:rgba(184,150,90,0.25);}
-  .review-stars{color:var(--gold);font-size:0.7rem;letter-spacing:0.2em;margin-bottom:1rem;}
-  .review-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;line-height:1.75;color:rgba(245,240,232,0.6);margin-bottom:1.25rem;}
-  .review-source{font-family:'Raleway',sans-serif;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.7;}
-  @media(max-width:900px){.rec-hero-grid{grid-template-columns:1fr;gap:3rem;}.reviews-grid{grid-template-columns:1fr;}.reviews-section{padding:3rem 1.5rem;}}
-</style>
-</head><body>
-<div class="mobile-menu" id="mobileMenu">
-  <button onclick="toggleMenu()" style="position:absolute;top:2rem;right:1.75rem;background:none;border:none;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;padding:0;" aria-label="Close menu">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b8965a" stroke-width="1.5" stroke-linecap="round">
-      <line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/>
-    </svg>
-  </button>
-  <a href="index.html">Home</a>
-  <a href="biography.html">Biography</a>
-  <a href="vision.html">Vision for Future</a>
-  <a href="listen.html">Listen</a>
-  <a href="news.html">News</a>
-  <a href="recording.html">Recording</a>
-  <a href="contact.html">Contact</a>
-</div><nav id="navbar">
-  <a href="index.html" class="nav-logo">Phillip Kloeckner · D.M.A</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li class="nav-dropdown">
-      <a href="#" class="dropdown-trigger">About <svg width="8" height="5" viewBox="0 0 8 5" fill="none" style="display:inline-block;vertical-align:middle;margin-left:4px;transition:transform 0.3s"><path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
-      <div class="dropdown-menu">
-        <a href="biography.html" class="dropdown-item">Biography</a>
-        <a href="vision.html" class="dropdown-item">Vision for Future</a>
-      </div>
-    </li>
-    <li><a href="listen.html">Listen</a></li>
-    <li><a href="news.html">News</a></li>
-    <li><a href="recording.html">Recording</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
+</head>
+<body>
 <div class="page-hero">
-  <div class="page-hero-bg"></div>
+  <div class="page-hero-bg-img" style="background-image:url('images/phillip-pic1.png');"></div>
   <p class="page-eyebrow reveal">Discography</p>
   <h1 class="page-title reveal">My First<br><em>Recording</em></h1>
   <div class="page-rule reveal"></div>
   <p class="page-subtitle reveal">Available now through Raven CD — a landmark debut showcasing the full expressive range of the pipe organ.</p>
 </div>
-
 <div class="content-section">
   <div class="rec-hero-grid">
     <div class="reveal-left">
       <div class="cd-3d">
         <div class="cd-box">
-          <div class="cd-rings-outer">
-            <div class="cd-rings-mid">
-              <div class="cd-center">
-                <div class="cd-center-dot"></div>
-              </div>
-            </div>
-          </div>
-          <div class="cd-title-label">
-            <p>PHILLIP KLOECKNER</p>
-            <span>My First CD · Raven CD</span>
-          </div>
+          <div class="cd-rings-outer"><div class="cd-rings-mid"><div class="cd-center"><div class="cd-center-dot"></div></div></div></div>
+          <div class="cd-title-label"><p>PHILLIP KLOECKNER</p><span>My First CD · Raven CD</span></div>
         </div>
         <div class="cd-shadow"></div>
       </div>
     </div>
-
     <div class="rec-body reveal-right">
       <p class="section-label">Debut Recording</p>
       <div class="accent-line"></div>
       <h2 class="section-title">My First <em>CD</em></h2>
-      <div class="price-badge">
-        <span class="price-val">Available</span>
-        <span class="price-label">Raven CD</span>
-      </div>
       <p>A landmark debut recording that showcases Phillip Kloeckner's mastery across the full breadth of the organ's repertoire — from the introspective beauty of Bach's chorale preludes to the grandeur of the Romantic symphonic tradition.</p>
       <p>Recorded on a magnificent instrument, the album captures both the technical precision and the profound spiritual depth that define Kloeckner's artistry as one of today's most distinctive organists.</p>
       <div class="buy-row">
@@ -229,9 +43,7 @@
       </div>
     </div>
   </div>
-
-  <!-- TRACKLIST -->
-  <div style="margin-top:5rem;">
+  <div style="margin-top:5rem">
     <p class="section-label reveal">Track Listing</p>
     <div class="accent-line reveal"></div>
     <h2 class="section-title reveal">Programme</h2>
@@ -246,93 +58,17 @@
     </div>
   </div>
 </div>
-
-<!-- REVIEWS -->
 <div class="reviews-section">
-  <div style="max-width:1100px;margin:0 auto;">
+  <div style="max-width:1100px;margin:0 auto">
     <p class="section-label reveal">Press</p>
     <div class="accent-line reveal"></div>
     <h2 class="section-title reveal">Critical <em>Reception</em></h2>
     <div class="reviews-grid">
-      <div class="review-card reveal">
-        <div class="review-stars">✦ ✦ ✦ ✦ ✦</div>
-        <p class="review-text">"Kloeckner tuvo una ejecución llena de color y que demostró su virtuosismo."</p>
-        <p class="review-source">La Palabra</p>
-      </div>
-      <div class="review-card reveal">
-        <div class="review-stars">✦ ✦ ✦ ✦ ✦</div>
-        <p class="review-text">"A performance of remarkable interpretive depth — Kloeckner brings both intellectual rigor and genuine warmth to every phrase."</p>
-        <p class="review-source">Chicago Classical Review</p>
-      </div>
-      <div class="review-card reveal">
-        <div class="review-stars">✦ ✦ ✦ ✦ ✦</div>
-        <p class="review-text">"The Puccini premieres alone make this recording an essential document — a thrilling discovery handled with supreme sensitivity."</p>
-        <p class="review-source">American Organist</p>
-      </div>
+      <div class="review-card reveal"><div class="review-stars">✦ ✦ ✦ ✦ ✦</div><p class="review-text">"Kloeckner tuvo una ejecución llena de color y que demostró su virtuosismo."</p><p class="review-source">La Palabra</p></div>
+      <div class="review-card reveal"><div class="review-stars">✦ ✦ ✦ ✦ ✦</div><p class="review-text">"A performance of remarkable interpretive depth — Kloeckner brings both intellectual rigor and genuine warmth to every phrase."</p><p class="review-source">Chicago Classical Review</p></div>
+      <div class="review-card reveal"><div class="review-stars">✦ ✦ ✦ ✦ ✦</div><p class="review-text">"The Puccini premieres alone make this recording an essential document — a thrilling discovery handled with supreme sensitivity."</p><p class="review-source">American Organist</p></div>
     </div>
   </div>
 </div>
-
-<div class="footer-grid">
-  <div>
-    <span class="footer-col-label">Contact</span>
-    <div class="contact-info">Phillip Kloeckner, DMA<br>Chicago International Organ Academy<br>77 W. Washington St, Ste 200<br>Chicago, Illinois 60602</div>
-  </div>
-  <div>
-    <span class="footer-col-label">Get in Touch</span>
-    <div class="contact-info"><a href="tel:7733091769" style="color:inherit;text-decoration:none">773-309-1769</a><br><a href="mailto:info@cioa.global" style="color:inherit;text-decoration:none">info@cioa.global</a></div>
-    <a href="contact.html" style="display:block;margin-top:0.75rem;font-family:'Raleway',sans-serif;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-light);text-decoration:none;transition:letter-spacing 0.3s">→ Contact Form</a>
-  </div>
-  <div>
-    <span class="footer-col-label">Newsletter</span>
-    <p class="subscribe-heading">Stay Close to the Music</p>
-    <p class="subscribe-desc">Recitals, premieres &amp; recordings — to your inbox.</p>
-    <div class="subscribe-form">
-      <div class="subscribe-row">
-        <input type="email" class="subscribe-input sub-email" placeholder="Your email address" autocomplete="email"/>
-        <button class="subscribe-btn sub-go" onclick="handleSub(this)"><span>Go</span></button>
-      </div>
-      <div class="subscribe-success sub-ok" style="display:none;align-items:center;gap:.6rem;padding:.7rem 1rem;border:1px solid rgba(184,150,90,0.3);background:rgba(184,150,90,0.05)">
-        <svg width="14" height="14" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8.5" stroke="#b8965a" stroke-width="1"/><path d="M5 9l3 3 5-5" stroke="#b8965a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;color:var(--gold-light);font-style:italic">Thank you!</p>
-      </div>
-      <p class="subscribe-note">No spam, ever.</p>
-    </div>
-  </div>
-  <div>
-    <span class="footer-col-label">Follow</span>
-    <div>
-      <a href="http://www.linkedin.com/pub/phillip-kloeckner/38/634/1b6" target="_blank" class="social-icon-link"><span class="soc-dot"></span>LinkedIn</a>
-      <a href="http://www.cioa.global/" target="_blank" class="social-icon-link"><span class="soc-dot"></span>CIOA Website</a>
-      <a href="#" class="social-icon-link"><span class="soc-dot"></span>YouTube</a>
-      <a href="#" class="social-icon-link"><span class="soc-dot"></span>Recordings</a>
-    </div>
-  </div>
-</div>
-<footer style="background:var(--surface)">
-  <div class="footer-bottom">
-    <p class="footer-copy">© 2024 Phillip Kloeckner, D.M.A. All rights reserved.</p>
-    <a href="http://www.cioa.global/" target="_blank" class="footer-link">Chicago International Organ Academy →</a>
-  </div>
-</footer><script>
-  const navbar=document.getElementById('navbar');
-  window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>60));
-  function toggleMenu(){
-    document.getElementById('mobileMenu').classList.toggle('open');
-    document.getElementById('hamburger').classList.toggle('open');
-  }
-  document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',toggleMenu));
-  function handleSub(btn){
-    const wrap=btn.closest('.subscribe-form');
-    const input=wrap.querySelector('.sub-email');
-    const ok=wrap.querySelector('.sub-ok');
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())){input.style.borderColor='rgba(200,80,80,0.5)';setTimeout(()=>input.style.borderColor='rgba(184,150,90,0.2)',1800);return;}
-    wrap.querySelector('.subscribe-row').style.display='none';
-    ok.style.display='flex';
-  }
-  document.querySelectorAll('.sub-email').forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter')el.closest('.subscribe-form').querySelector('.sub-go').click();}));
-  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>{
-    new IntersectionObserver(([e])=>{if(e.isIntersecting)e.target.classList.add('visible');},{threshold:0.1,rootMargin:'0px 0px -50px 0px'}).observe(el);
-  });
-</script>
-</body></html>
+</body>
+</html>
